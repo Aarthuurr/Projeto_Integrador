@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Aplica o tema salvo (claro/escuro) antes da página pintar, evitando "flash" de cor errada -->
+    <script>
+        (function () {
+            var saved = localStorage.getItem('theme');
+            var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ótica e Luz em Nossas Vidas — projeto integrador com conteúdo sobre Ótica, Robótica e Física e Tecnociência, com recursos de acessibilidade.">
+
+    <!-- Open Graph: como o link aparece ao ser compartilhado -->
+    <meta property="og:title" content="Ótica e Luz em Nossas Vidas">
+    <meta property="og:description" content="Projeto integrador sobre Ótica, Robótica e Física e Tecnociência.">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <title>Ótica e Luz em Nossas Vidas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+
+    <div class="accessibility-bar" role="region" aria-label="Ferramentas de acessibilidade">
+        <div class="accessibility-container">
+            <span class="acc-label">Acessibilidade</span>
+            <button id="btn-increase" class="acc-btn" title="Aumentar tamanho do texto">A+</button>
+            <button id="btn-decrease" class="acc-btn" title="Diminuir tamanho do texto">A-</button>
+            <button id="btn-speak" class="acc-btn" title="Ler conteúdo da aba visível" aria-pressed="false">🔊 Ouvir</button>
+            <button id="btn-theme" class="acc-btn" title="Alternar tema claro/escuro" aria-pressed="false">🌙 Escuro</button>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="header-inner">
+            <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir Menu" aria-expanded="false" aria-controls="tabs-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <h1 class="main-title">Ótica e Luz em Nossas Vidas</h1>
+            <p class="main-subtitle">Projeto Integrador — Robótica e Física e Tecnociência</p>
+            <div class="spectrum-line" aria-hidden="true"></div>
+
+            <nav class="tabs-nav" id="tabs-nav" role="tablist" aria-label="Seções do projeto">
+                <button class="tab-btn active" role="tab" id="tab-otica" aria-selected="true" aria-controls="otica" onclick="openTab(event, 'otica')">Introdução à Ótica</button>
+                <button class="tab-btn" role="tab" id="tab-robotica" aria-selected="false" aria-controls="robotica" tabindex="-1" onclick="openTab(event, 'robotica')">Robótica</button>
+                <button class="tab-btn" role="tab" id="tab-fisica-tecnociencia" aria-selected="false" aria-controls="fisica-tecnociencia" tabindex="-1" onclick="openTab(event, 'fisica-tecnociencia')">Física e Tecnociência</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" id="main-content">
+
+        <section id="otica" class="tab-content active" role="tabpanel" aria-labelledby="tab-otica" tabindex="0">
+            <h2>Introdução à Ótica</h2>
+            <p>
+                A Ótica é o ramo da Física dedicado ao estudo da luz e dos fenômenos luminosos.
+                Ela é dividida principalmente em <strong>Ótica Geométrica</strong> (que estuda a propagação retilínea da luz, reflexão e refração)
+                e <strong>Ótica Física</strong> (que analisa a natureza ondulatória da luz, como difração e interferência).
+            </p>
+            <p>
+                A aplicação prática da Ótica está presente em telescópios, microscópios, lentes corretivas e nas tecnologias modernas de fibra ótica.
+            </p>
+
+            <p>
+                A óptica molda silenciosamente a maior parte das interações humanas com o mundo, atuando desde a percepção biológica até a
+                infraestrutura digital global.
+            </p>
+
+            <div class="topic-grid">
+                <article class="topic-card">
+                    <figure class="topic-card__media">
+                        <div class="topic-card__frame topic-card__frame--lg">
+                            <img src="imagens/olho-humano-esquema.png" alt="Esquema do olho humano mostrando córnea, cristalino, íris, retina e nervo óptico" loading="lazy">
+                        </div>
+                        <figcaption>Legenda: A luz atravessa córnea e cristalino até chegar à retina.</figcaption>
+                    </figure>
+                    <div class="topic-card__text">
+                        <h3>👁️ Saúde Visual e Medicina</h3>
+                        <p><strong>Visão e Correção:</strong> o olho opera como uma câmara escura natural onde córnea e cristalino refratam a luz até a retina. Óculos e lentes de contato ajustam o ângulo dessa refração para corrigir desvios como miopia, hipermetropia e astigmatismo.</p>
+                        <p><strong>Exames Invasivos:</strong> endoscópios utilizam feixes flexíveis de fibra óptica para conduzir luz e retornar imagens em tempo real do interior do corpo humano sem necessidade de cortes.</p>
+                    </div>
+                </article>
+
+                <article class="topic-card">
+                    <figure class="topic-card__media">
+                        <div class="topic-card__frame topic-card__frame--sm">
+                            <img src="imagens/subpixels-rgb.png" alt="Foto macro dos subpixels vermelho, verde e azul de uma tela digital" loading="lazy">
+                        </div>
+                        <figcaption>Legenda: Subpixels RGB vistos de perto em uma tela digital.</figcaption>
+                    </figure>
+                    <div class="topic-card__text">
+                        <h3>📱 Tecnologia Pessoal e Telas</h3>
+                        <p><strong>Câmeras de Smartphone:</strong> conjuntos de micro-lentes de cristal organizam os raios luminosos refletidos pelo ambiente e os focam em sensores digitais (CMOS) para capturar fotos e vídeos.</p>
+                        <p><strong>Displays Digitais:</strong> monitores, celulares e TVs combinam subpixels que emitem luzes vermelha, verde e azul (RGB) em variadas intensidades para formar qualquer cor visível no dia a dia.</p>
+                    </div>
+                </article>
+
+                <article class="topic-card">
+                    <figure class="topic-card__media">
+                        <div class="topic-card__frame topic-card__frame--wide">
+                            <img src="imagens/espelho-convexo.png" alt="Espelho convexo de trânsito refletindo o interior de um ambiente" loading="lazy">
+                        </div>
+                        <figcaption>Legenda: Espelho convexo amplia o campo de visão em cruzamentos e garagens.</figcaption>
+                    </figure>
+                    <div class="topic-card__text">
+                        <h3>🚦 Infraestrutura e Trânsito</h3>
+                        <p><strong>Internet de Alta Velocidade:</strong> pulsos de luz laser trafegam milhares de quilômetros dentro de cabos de fibra óptica por meio do fenômeno de reflexão total, garantindo o funcionamento de redes sociais, streamings e conexões bancárias.</p>
+                        <p><strong>Segurança Viária:</strong> espelhos convexos em saídas de garagens e cruzamentos ampliam o campo de visão dos motoristas. Roupas de ciclistas e placas de trânsito usam superfícies retrorrefletoras para devolver a luz dos faróis diretamente para os olhos do condutor.</p>
+                    </div>
+                </article>
+
+                <article class="topic-card">
+                    <figure class="topic-card__media">
+                        <div class="topic-card__frame topic-card__frame--md">
+                            <img src="imagens/arco-iris-esquema.png" alt="Esquema mostrando a refração e reflexão da luz solar dentro de uma gota de chuva, formando o arco-íris" loading="lazy">
+                        </div>
+                        <figcaption>Legenda: Refração e reflexão da luz dentro da gota formam o arco-íris.</figcaption>
+                    </figure>
+                    <div class="topic-card__text">
+                        <h3>🌈 Fenômenos Naturais</h3>
+                        <p><strong>Arco-íris e Miragens:</strong> gotas de chuva agem como pequenos prismas que refratam, refletem e decompõem a luz solar em sete cores principais. No asfalto quente, a variação de temperatura do ar desvia a luz solar para cima, criando a ilusão de poças de água na pista.</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="insight-card">
+                <h3>🔦 Quando a Luz (e a Informação) Nos Enganam</h3>
+                <p>
+                    Assim como a luz pode se curvar e criar miragens que enganam nossos olhos, a informação também pode ser distorcida para
+                    enganar nossa mente. Entender os fenômenos da percepção visual ajuda, por analogia, a entender como as notícias falsas se
+                    espalham e por que caímos nelas — e por que checar a fonte antes de acreditar é tão importante quanto olhar duas vezes
+                    para uma miragem no asfalto.
+                </p>
+
+                <details class="info-accordion">
+                    <summary>📰 Três tipos de informação enganosa</summary>
+                    <p><strong>Desinformação:</strong> informação deliberadamente falsa, criada para causar dano ou obter lucro.</p>
+                    <p><strong>Informação incorreta:</strong> informação errada compartilhada sem intenção maliciosa — como repassar um boato acreditando que é verdade.</p>
+                    <p><strong>Informação mal-intencionada:</strong> baseada em fatos reais, mas distorcida ou tirada de contexto para prejudicar uma pessoa ou instituição.</p>
+                </details>
+
+                <details class="info-accordion">
+                    <summary>⚙️ Como os algoritmos espalham fake news</summary>
+                    <p>
+                        As redes sociais operam sob a lógica da "Economia da Atenção": algoritmos de recomendação priorizam conteúdos que geram
+                        mais retenção e reação. Notícias sensacionalistas ativam respostas emocionais rápidas — raiva, medo, indignação — e por
+                        isso alcançam mais gente do que notícias checadas e mais sóbrias.
+                    </p>
+                </details>
+
+                <details class="info-accordion">
+                    <summary>🧠 Por que caímos nisso: vieses da mente</summary>
+                    <p><strong>Viés de Confirmação:</strong> tendência de aceitar sem questionar qualquer informação que confirme crenças e ideias que já temos.</p>
+                    <p><strong>Efeito da Ilusão de Verdade:</strong> a exposição repetida a uma afirmação falsa faz o cérebro passar a percebê-la como verdadeira — a repetição gera familiaridade, e o cérebro confunde familiaridade com verdade.</p>
+                    <p><strong>Dissonância Cognitiva:</strong> rejeição instintiva a fatos reais quando eles desafiam a visão de mundo da pessoa.</p>
+                </details>
+
+                <details class="info-accordion">
+                    <summary>🎭 Deepfakes: quando a imagem e o som também enganam</summary>
+                    <p>
+                        A evolução da computação gráfica e do processamento de áudio permite criar deepfakes — vídeos e áudios gerados por
+                        algoritmos que simulam com precisão impressionante a voz e os gestos de pessoas reais, tornando quase impossível
+                        identificar a fraude só de olho nu.
+                    </p>
+                </details>
+
+                <details class="info-accordion">
+                    <summary>🤖 Como a Inteligência Artificial ajudou nesta pesquisa</summary>
+                    <p>
+                        A IA ajudou a diferenciar tecnicamente os três tipos de desinformação (com base no enquadramento da UNESCO), resumiu
+                        estudos de psicologia cognitiva sobre o efeito da ilusão de verdade, identificou padrões linguísticos comuns em manchetes
+                        clickbait (adjetivos alarmistas, CAIXA ALTA, ausência de fontes) e ajudou a estruturar um roteiro de checagem de fatos —
+                        incluindo a técnica de "Leitura Lateral": abrir outras abas para ver o que outros veículos dizem sobre a fonte antes de
+                        continuar lendo a notícia original.
+                    </p>
+                </details>
+            </div>
+        </section>
+
+        <section id="robotica" class="tab-content" role="tabpanel" aria-labelledby="tab-robotica" tabindex="0" hidden>
+            <h2>Projetos de Robótica</h2>
+
+            <article class="project-card">
+                <span class="project-badge" aria-hidden="true">01</span>
+                <h3>Disco de Newton</h3>
+
+                <div class="real-world-card">
+                    <figure class="real-world-card__media">
+                        <img src="imagens/oculos-filtro-luz-azul.png" alt="Óculos com e sem filtro de luz azul, mostrando o feixe de luz sendo bloqueado pela lente com filtro" loading="lazy">
+                    </figure>
+                    <div class="real-world-card__text">
+                        <span class="real-world-card__label">Tecnologia relacionada</span>
+                        <p>Óculos com filtros terapêuticos bloqueiam comprimentos de onda específicos da luz (como o azul ou o violeta), reduzindo o ofuscamento e aumentando o conforto visual de pessoas com fotofobia.</p>
+                    </div>
+                </div>
+
+                <p>
+                    Construímos um Disco de Newton — um disco dividido em sete setores coloridos com as cores do espectro visível — e o giramos em alta velocidade.
+                    Conforme a rotação aumentava, as cores deixavam de ser vistas individualmente e se misturavam, até o disco parecer branco/acinzentado,
+                    demonstrando na prática que a luz branca é a soma de todas as cores.
+                </p>
+
+                <div class="media-grid">
+                    <figure>
+                        <img src="imagens/disco-newton-foto.png" alt="Foto do Disco de Newton físico utilizado no experimento" loading="lazy">
+                        <figcaption>Legenda: Foto do Disco de Newton utilizado no experimento.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="imagens/disco-newton-cores.png" alt="Ilustração do disco dividido nas sete cores do espectro visível" loading="lazy">
+                        <figcaption>Legenda: Ilustração das sete cores do espectro utilizadas no disco.</figcaption>
+                    </figure>
+                </div>
+
+                <div class="video-box">
+                    <div class="video-wrapper">
+                        <video controls poster="imagens/disco-newton-foto.png">
+                            <source src="videos/disco-newton.mp4" type="video/mp4">
+                            <track kind="captions" src="legenda-disco-newton.vtt" srclang="pt" label="Português">
+                            Seu navegador não suporta a tag de vídeo.
+                        </video>
+                        <button class="video-play-btn" type="button" aria-label="Reproduzir vídeo">▶</button>
+                    </div>
+                    <p class="media-caption">Vídeo: Disco de Newton em rotação, demonstrando a formação da cor branca.</p>
+                </div>
+
+                <details class="info-accordion">
+                    <summary>🔬 Explicação científica</summary>
+                    <p>
+                        O experimento se baseia nos estudos de Isaac Newton sobre a luz branca: ela não é ausência de cor, mas a soma de todas as cores luminosas,
+                        que se separam ao atravessar um prisma. O disco parece branco quando gira rápido por um fenômeno chamado <strong>persistência retiniana</strong> —
+                        o olho retém a imagem por uma fração de segundo, e o cérebro "soma" os reflexos das sete cores, interpretando o resultado como luz branca.
+                        Essa percepção acontece graças aos cones da retina, sensíveis à luz vermelha, verde e azul.
+                    </p>
+                </details>
+
+                <details class="info-accordion">
+                    <summary>♿ Relação com a deficiência visual</summary>
+                    <p>
+                        A percepção de luz e cor varia muito entre pessoas com baixa visão: algumas precisam de muita luz para identificar formas, enquanto outras
+                        (com fotofobia severa) sentem dor ou têm a visão ofuscada em ambientes claros. A iluminação define o contraste e a profundidade dos objetos —
+                        sem cores contrastantes, itens se fundem com o fundo. Entender que a luz branca é soma de cores permite criar telas, óculos e softwares que
+                        manipulam comprimentos de onda específicos para melhorar o conforto visual.
+                    </p>
+                </details>
+
+                <details class="info-accordion">
+                    <summary>💡 Nossa proposta: Filtro Inteligente de Leitura (F.I.L.)</summary>
+                    <p>
+                        Uma luminária de mesa com câmera inteligente e LEDs RGB ajustáveis que, em vez de emitir luz branca comum, isola as cores específicas mais
+                        confortáveis para cada usuário — bloqueando, por exemplo, a luz azul que causa ofuscamento. Uma IA embutida analisaria o reflexo do papel e
+                        ajustaria automaticamente o "balanço de cor" ideal, aprendendo as preferências do usuário ao longo do tempo.
+                    </p>
+                </details>
+
+                <details class="info-accordion">
+                    <summary>✅ Conclusão</summary>
+                    <p>
+                        O Disco de Newton nos mostrou que a luz não é um feixe único, mas uma composição de cores que pode ser estudada e manipulada. Compreender
+                        como a luz reflete e como o olho a absorve é a base para criar telas de alto contraste, filtros terapêuticos e ambientes inteligentes que
+                        devolvem independência e dignidade a pessoas com deficiência visual.
+                    </p>
+                </details>
+            </article>
+
+            <article class="project-card">
+                <span class="project-badge" aria-hidden="true">02</span>
+                <h3>LEDs: Fade In e Fade Out</h3>
+
+                <div class="real-world-card">
+                    <figure class="real-world-card__media">
+                        <img src="imagens/philips-hue.png" alt="Lâmpada inteligente Philips Hue e aplicativo de controle de cor" loading="lazy">
+                    </figure>
+                    <div class="real-world-card__text">
+                        <span class="real-world-card__label">Tecnologia relacionada</span>
+                        <p>Lâmpadas inteligentes, como a Philips Hue, usam controle PWM para ajustar brilho e temperatura de cor via aplicativo, ajudando pessoas com fotofobia a configurar o ambiente ideal.</p>
+                    </div>
+                </div>
+
+                <p>
+                    Simulamos, no Tinkercad, um circuito com Arduino UNO e um LED controlado por PWM (Modulação por Largura de Pulso) para criar os efeitos de
+                    Fade-In (acende gradualmente) e Fade-Out (apaga gradualmente), demonstrando como é possível controlar a intensidade luminosa de forma precisa.
+                </p>
+
+                <div class="media-grid">
+                    <figure>
+                        <img src="imagens/circuito-fade-in.png" alt="Circuito do Fade-In montado no Tinkercad: Arduino UNO, resistor e LED" loading="lazy">
+                        <figcaption>Legenda: Circuito do Fade-In montado no Tinkercad.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="imagens/codigo-fade-in.png" alt="Código em blocos/C++ usado para o efeito Fade-In" loading="lazy">
+                        <figcaption>Legenda: Código utilizado no Fade-In.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="imagens/circuito-fade-out.png" alt="Circuito do Fade-Out montado no Tinkercad" loading="lazy">
+                        <figcaption>Legenda: Circuito do Fade-Out montado no Tinkercad.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="imagens/codigo-fade-out.png" alt="Código em blocos/C++ usado para o efeito Fade-Out" loading="lazy">
+                        <figcaption>Legenda: Código utilizado no Fade-Out.</figcaption>
+                    </figure>
+                </div>
+
+                <div class="video-box">
+                    <div class="video-wrapper">
+                        <video controls poster="imagens/circuito-fade-in.png">
+                            <source src="videos/leds-fade-in.mp4" type="video/mp4">
+                            <track kind="captions" src="legenda-leds-fade-in.vtt" srclang="pt" label="Português">
+                        </video>
+                        <button class="video-play-btn" type="button" aria-label="Reproduzir vídeo">▶</button>
+                    </div>
+                    <p class="media-caption">Vídeo: Simulação do efeito Fade-In.</p>
+                </div>
+
+                <div class="video-box">
+                    <div class="video-wrapper">
+                        <video controls poster="imagens/circuito-fade-out.png">
+                            <source src="videos/leds-fade-out.mp4" type="video/mp4">
+                            <track kind="captions" src="legenda-leds-fade-out.vtt" srclang="pt" label="Português">
+                        </video>
+                        <button class="video-play-btn" type="button" aria-label="Reproduzir vídeo">▶</button>
+                    </div>
+                    <p class="media-caption">Vídeo: Simulação do efeito Fade-Out.</p>
+                </div>
+
+                <details class="info-accordion">
+                    <summary>🔬 Explicação científica</summary>
+                    <p>
+                        O LED transforma energia elétrica em luz ao passar corrente por um material semicondutor. Como os pinos digitais só entendem "ligado" ou
+                        "desligado", o <strong>PWM</strong> liga e desliga o LED tão rápido que o olho humano não percebe a oscilação, apenas uma média de luz: quanto
+                        mais tempo ligado no ciclo, mais intenso o brilho. Essa técnica está por trás do brilho automático de telas, painéis de carros e dimmers residenciais.
+                    </p>
+                </details>
+
+                <details class="info-accordion">
+                    <summary>♿ Relação com a deficiência visual</summary>
+                    <p>
+                        Pessoas com baixa visão dependem muito do contraste para distinguir objetos e textos — o excesso de luz pode ofuscar (como na catarata),
+                        enquanto a falta de luz pode tornar a visão quase nula (como na retinose pigmentar). Iluminação inadequada causa fadiga visual, desorientação
+                        e aumenta o risco de quedas. Como não existe uma iluminação ideal única para todas as condições, o controle de intensidade é essencial em
+                        tecnologias assistivas.
+                    </p>
+                </details>
+
+                <details class="info-accordion">
+                    <summary>💡 Nossa proposta: Passo Luminoso Inteligente</summary>
+                    <p>
+                        Um sistema de rodapés e corrimãos com fitas de LED que detectam a aproximação do usuário e realizam um Fade-In suave apenas no trajeto em
+                        que a pessoa está caminhando — evitando o choque de uma luz forte que "cega" momentaneamente. A intensidade e a cor podem ser programadas
+                        pelo smartphone, e uma IA poderia reconhecer obstáculos no chão e alertar mudando a cor dos LEDs daquele trecho.
+                    </p>
+                </details>
+
+                <details class="info-accordion">
+                    <summary>✅ Conclusão</summary>
+                    <p>
+                        O controle de iluminação vai além da estética: é uma questão de saúde e inclusão. Como pessoas com deficiência visual têm necessidades muito
+                        variadas, a customização — vista aqui no Fade-In/Fade-Out — é a chave para soluções assistivas seguras e confortáveis.
+                    </p>
+                </details>
+            </article>
+
+            <article class="project-card">
+                <span class="project-badge" aria-hidden="true">03</span>
+                <h3>LED RGB</h3>
+
+                <div class="real-world-card">
+                    <figure class="real-world-card__media">
+                        <img src="imagens/windows8-alto-contraste.png" alt="Tela Iniciar do Windows 8 configurada com tema de alto contraste, fundo preto e textos coloridos" loading="lazy">
+                    </figure>
+                    <div class="real-world-card__text">
+                        <span class="real-world-card__label">Tecnologia relacionada</span>
+                        <p>Os modos de alto contraste de celulares e computadores manipulam digitalmente os valores RGB dos pixels para facilitar a leitura por pessoas com baixa visão.</p>
+                    </div>
+                </div>
+
+                <p>
+                    No Tinkercad, controlamos separadamente as cores Vermelho, Verde e Azul de um LED RGB via PWM, observando como a mistura aditiva dessas três
+                    cores primárias gera praticamente qualquer tonalidade — incluindo a luz branca, quando as três estão no máximo.
+                </p>
+
+                <div class="media-grid">
+                    <figure>
+                        <img src="imagens/circuito-rgb-apagado.png" alt="Circuito completo do LED RGB com potenciômetro montado no Tinkercad, LED apagado" loading="lazy">
+                        <figcaption>Legenda: Circuito completo montado no Tinkercad.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="imagens/codigo-rgb-1.png" alt="Código utilizado para controlar o LED RGB, parte 1" loading="lazy">
+                        <figcaption>Legenda: Código utilizado (parte 1).</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="imagens/codigo-rgb-2.png" alt="Código utilizado para controlar o LED RGB, parte 2" loading="lazy">
+                        <figcaption>Legenda: Código utilizado (parte 2).</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="imagens/circuito-rgb-aceso.png" alt="LED RGB aceso, emitindo cor verde durante o teste" loading="lazy">
+                        <figcaption>Legenda: LED RGB aceso durante o teste.</figcaption>
+                    </figure>
+                </div>
+
+                <div class="video-box">
+                    <div class="video-wrapper">
+                        <video controls poster="imagens/circuito-rgb-aceso.png">
+                            <source src="videos/led-rgb.mp4" type="video/mp4">
+                            <track kind="captions" src="legenda-led-rgb.vtt" srclang="pt" label="Português">
+                        </video>
+                        <button class="video-play-btn" type="button" aria-label="Reproduzir vídeo">▶</button>
+                    </div>
+                    <p class="media-caption">Vídeo: Simulação do LED RGB.</p>
+                </div>
+
+                <details class="info-accordion">
+                    <summary>🔬 Explicação científica</summary>
+                    <p>
+                        Um LED RGB é, na prática, três LEDs (vermelho, verde e azul) na mesma lente, controlados individualmente. O modelo RGB é baseado na biologia
+                        do olho humano, que tem cones sensíveis justamente a essas três faixas de frequência. A mistura de luz é <strong>aditiva</strong>: vermelho +
+                        verde = amarelo; verde + azul = ciano; vermelho + azul = magenta; as três no máximo = branco. Esse é o princípio por trás de telas de celular,
+                        monitores e painéis de LED.
+                    </p>
+                </details>
+
+                <details class="info-accordion">
+                    <summary>♿ Relação com a deficiência visual</summary>
+                    <p>
+                        O alto contraste (como texto amarelo em fundo preto) ajuda pessoas com baixa visão a delimitar bordas de objetos e letras, reduzindo a fadiga
+                        visual. É importante nunca depender só da cor para passar uma informação, pensando em pessoas daltônicas. Em espaços físicos, portas, corrimãos
+                        e o piso tátil usam cores fortemente contrastantes para ajudar na orientação com autonomia.
+                    </p>
+                </details>
+
+                <details class="info-accordion">
+                    <summary>💡 Nossa proposta: Guia-Cor Inteligente</summary>
+                    <p>
+                        Fitas de LED RGB embutidas em rodapés e corrimãos de ambientes internos (como hospitais e shoppings). O usuário define no aplicativo qual
+                        combinação de cores oferece o melhor contraste para sua visão, e sensores detectam sua presença, mudando os LEDs do rodapé para essa cor e
+                        traçando um "caminho de alto contraste" dinâmico.
+                    </p>
+                </details>
+
+                <details class="info-accordion">
+                    <summary>✅ Conclusão</summary>
+                    <p>
+                        A cor não é só estética: é um dado visível manipulável, e uma das ferramentas mais poderosas de comunicação visual. Para pessoas com
+                        deficiência visual, o uso estratégico da luz e do contraste pode ser a diferença entre autonomia e dependência.
+                    </p>
+                </details>
+            </article>
+
+        </section>
+
+        <section id="fisica-tecnociencia" class="tab-content" role="tabpanel" aria-labelledby="tab-fisica-tecnociencia" tabindex="0" hidden>
+            <h2>Projetos de Física e Tecnociência</h2>
+
+            <article class="project-card">
+                <span class="project-badge" aria-hidden="true">01</span>
+                <h3>Óptica Aplicada: a Luz no Nosso Dia a Dia</h3>
+
+                <div class="real-world-card">
+                    <figure class="real-world-card__media">
+                        <img src="imagens/fibra-optica-esquema.png" alt="Esquema mostrando a luz sofrendo reflexão total dentro de um cabo de fibra óptica" loading="lazy">
+                    </figure>
+                    <div class="real-world-card__text">
+                        <span class="real-world-card__label">Tecnologia relacionada</span>
+                        <p>A internet de alta velocidade chega às casas como pulsos de luz viajando por finos cabos de vidro, usando o princípio da reflexão total da luz.</p>
+                    </div>
+                </div>
+
+                <p>
+                    A óptica está presente em nossas casas, no comércio, nas salas de aula e nas indústrias. Levantamos um exemplo de cada contexto para mostrar como
+                    a teoria óptica vira solução prática — do cabo de internet ao corte a laser industrial.
+                </p>
+
+                <div class="table-wrapper">
+                    <table class="sector-table">
+                        <caption class="sr-only">Quadro comparativo de tecnologias ópticas por setor</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Equipamento</th>
+                                <th scope="col">Contexto</th>
+                                <th scope="col">Princípio óptico</th>
+                                <th scope="col">Fenômeno-chave</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Fibra Óptica</td>
+                                <td>Residencial</td>
+                                <td>Reflexão total</td>
+                                <td>A luz fica "aprisionada" no núcleo do cabo por reflexão contínua.</td>
+                            </tr>
+                            <tr>
+                                <td>Leitor de código de barras</td>
+                                <td>Comercial</td>
+                                <td>Reflexão e absorção</td>
+                                <td>Superfícies claras refletem e as escuras absorvem o laser.</td>
+                            </tr>
+                            <tr>
+                                <td>Projetor multimídia</td>
+                                <td>Escolar</td>
+                                <td>Refração e lentes</td>
+                                <td>A luz muda de velocidade nas lentes, ampliando a imagem.</td>
+                            </tr>
+                            <tr>
+                                <td>Corte a laser</td>
+                                <td>Industrial</td>
+                                <td>Concentração de feixe coerente</td>
+                                <td>O foco de luz concentrado gera calor intenso para fundir materiais.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <details class="info-accordion">
+                    <summary>🏠 Como funciona cada equipamento</summary>
+                    <p><strong>Fibra óptica:</strong> o sinal elétrico é convertido em luz por um laser/LED, viaja pelo cabo de vidro "quicando" em suas paredes internas e é reconvertido em dados pelo roteador.</p>
+                    <p><strong>Leitor de código de barras:</strong> um feixe laser varre a etiqueta; um sensor capta as variações de luz refletida entre as barras claras e escuras e converte em código numérico.</p>
+                    <p><strong>Projetor multimídia:</strong> uma luz branca intensa é dividida em Vermelho, Verde e Azul por filtros e prismas; lentes convergentes ampliam e focam a imagem na tela.</p>
+                    <p><strong>Corte a laser:</strong> espelhos direcionam um feixe de luz coerente e monocromática até uma lente que concentra a energia em um ponto extremamente pequeno, derretendo o material.</p>
+                </details>
+
+                <details class="info-accordion">
+                    <summary>♿ Conexão com acessibilidade</summary>
+                    <p>
+                        Os sensores ópticos de contraste dos leitores comerciais são a base de aplicativos que "leem" textos impressos para pessoas cegas. Nos
+                        projetores escolares, o controle de intensidade e contraste permite que alunos com baixa visão ou fotofobia acompanhem as aulas sem
+                        desconforto. E a fibra óptica garante a infraestrutura de internet necessária para leitores de tela em tempo real e chamadas com tradução em Libras.
+                    </p>
+                </details>
+            </article>
+
+            <article class="project-card">
+                <span class="project-badge" aria-hidden="true">02</span>
+                <h3>As Primeiras Ideias sobre a Luz na Antiguidade</h3>
+
+                <div class="real-world-card">
+                    <figure class="real-world-card__media">
+                        <img src="imagens/raios-visuais-euclides.png" alt="Esquema de raios visuais entre o olho e um objeto, representando a óptica geométrica de Euclides" loading="lazy">
+                    </figure>
+                    <div class="real-world-card__text">
+                        <span class="real-world-card__label">Legado até hoje</span>
+                        <p>O conceito de "raio de luz" em linha reta, criado por Euclides há mais de 2000 anos, ainda é usado para calcular o trajeto da luz em lentes, espelhos, câmeras e óculos.</p>
+                    </div>
+                </div>
+
+                <p>
+                    Na Antiguidade Clássica, a ciência estava profundamente ligada à filosofia. Pensadores gregos como Pitágoras, Empédocles, Euclides e Ptolomeu
+                    buscavam entender a mecânica da visão: como conseguimos enxergar o mundo ao nosso redor, e qual o papel da luz e dos nossos olhos nesse processo?
+                </p>
+
+                <div class="media-grid media-grid--single">
+                    <figure>
+                        <img src="imagens/tabela-extramissao-intromissao.png" alt="Tabela comparativa entre a Teoria da Extramissão e a Teoria da Intromissão" loading="lazy">
+                        <figcaption>Legenda: Tabela comparativa entre as duas teorias da visão na Antiguidade.</figcaption>
+                    </figure>
+                </div>
+
+                <details class="info-accordion">
+                    <summary>🏛️ Duas teorias sobre a luz</summary>
+                    <p>
+                        <strong>Extramissão</strong> (Pitágoras, Euclides, Ptolomeu): os olhos emitiriam "raios visuais" que viajavam em linha reta até tocar os
+                        objetos, como lanternas. <strong>Intromissão</strong> (atomistas como Demócrito e Epicuro): os objetos soltariam finas partículas de si
+                        mesmos ("simulacros") que entravam nos olhos. Empédocles propunha uma ideia mista, com um "fogo interno" no olho se encontrando com a luz do Sol.
+                    </p>
+                </details>
+
+                <details class="info-accordion">
+                    <summary>🔍 Evidências e questionamentos da época</summary>
+                    <p>
+                        A favor da Extramissão: ao abrir os olhos, via-se instantaneamente até estrelas distantes, o que sugeria (erroneamente) que o raio saía do
+                        olho e alcançava o espaço de imediato — e a matemática da perspectiva funcionava bem desenhando os raios a partir do olho. O grande
+                        problema dessa teoria era: por que não enxergamos no escuro absoluto? Já a Intromissão enfrentava o desafio de explicar como a imagem de
+                        uma montanha inteira "encolheria" para caber na pupila.
+                    </p>
+                </details>
+
+                <details class="info-accordion">
+                    <summary>🔗 Conexão com a física atual</summary>
+                    <p>
+                        Hoje sabemos que a Intromissão estava mais próxima da realidade: a luz viaja do objeto para os nossos olhos. Ainda assim, o trabalho de
+                        Euclides e Ptolomeu foi fundamental — eles mostraram que a luz obedece a regras geométricas rígidas (linha reta, ângulos de reflexão
+                        iguais), dando origem à <strong>Óptica Geométrica</strong>, base matemática usada até hoje para projetar lentes, espelhos e câmeras.
+                    </p>
+                </details>
+            </article>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>
+                Feito por João P. Sartorelo, Arthur Antonio, Gabriel H. Gomes e Kawan Henrique: Este site reúne os projetos das disciplinas de Robótica e Física e Tecnociência, dentro do
+                Projeto Integrador <strong>"Ótica e Luz em Nossas Vidas"</strong>. Desenvolvido com HTML, CSS e JavaScript
+                (<code>index.html</code>, <code>style.css</code> e <code>script.js</code>).
+            </p>
+        </div>
+    </footer>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+    <div class="lightbox" id="lightbox" hidden>
+        <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Fechar imagem ampliada">✕</button>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
